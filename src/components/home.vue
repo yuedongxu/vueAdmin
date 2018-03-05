@@ -1,70 +1,114 @@
 <template>
-    <div style="background-color: #eee;height:100%;overflow:hidden">
-        <div style="width:100%;background-color: #374045;height:40px; overflow: hidden">
-            <span class="demonstration" style="float:left;padding-top:10px;color:white;margin-left:1%">
-                <strong style="margin-left:30px;">admin后台</strong>
-            </span>
-            <span class="demonstration" style="float:left;padding:5px;color:white;margin-left:2%;width:15%">
-               <!--  <el-input
-                        placeholder="请输入"
-                        icon="search"
-                        v-model="searchCriteria"
-                        :on-icon-click="handleIconClick">
-                </el-input> -->
-            </span>
-            <span class="demonstration" style="float:right;padding-top:10px;margin-right:1%">
-                <el-dropdown trigger="click">
-                  <span class="el-dropdown-link" style="color:white">
-                    admin<i class="el-icon-caret-bottom el-icon--right"></i>
-                  </span>
-                  <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>个人信息</el-dropdown-item>
-                    <el-dropdown-item>退出登录</el-dropdown-item>
-                  </el-dropdown-menu>
+    
+    
+<el-container style="height: 100%; border: 1px solid #eee;">
+    <el-header style="font-size: 12px;background:#409EFF;">
+        <el-row  type="flex" justify="space-between" style="height:60px">
+            <div style="color:#fff;font-size:30px;">后台管理系统</div>
+            <span>
+                <el-dropdown style="height:30px;">
+                    <i class="el-icon-setting" style="margin-right: 15px"></i>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item>查看</el-dropdown-item>
+                      <el-dropdown-item>修改</el-dropdown-item>
+                      <el-dropdown-item>退出</el-dropdown-item>
+                    </el-dropdown-menu>
                 </el-dropdown>
+                <span style="color:#fff;">admin</span>
             </span>
-        </div>
-
-        <div style="margin-top:5px;height:100%;">
-            <el-row :gutter="10">
-                <el-col :xs="4" :sm="4" :md="4" :lg="4">
-                    <div>
-                        <el-menu default-active="1" class="el-menu-vertical-demo" style="min-height:2000px">
-                            <el-menu-item index="1"><i class="el-icon-message"></i>导航一</el-menu-item>
-                            <el-menu-item index="2"><i class="el-icon-menu"></i>导航二</el-menu-item>
-                            <el-menu-item index="3"><i class="el-icon-setting"></i>导航三</el-menu-item>
-                        </el-menu>
-                    </div>
-                </el-col>
-                <el-col :xs="20" :sm="20" :md="20" :lg="20">
-                    <div>
-                        <div style="border: 1px solid #A6A6A6; border-radius:2px; padding:5px; margin:2px; background-color: white">
-                            <el-breadcrumb separator="/">
-                              <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                              <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                              <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-                            </el-breadcrumb>
-                        </div>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
-    </div>
+        </el-row>
+        
+        
+    </el-header>
+  
+  
+  <el-container>
+    <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <el-menu :default-openeds="[]">
+          <el-submenu index="1">
+            <template slot="title"><i class="el-icon-message"></i>导航一</template>
+            <el-menu-item-group>
+              <template slot="title">分组一</template>
+              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="1-2">选项2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="1-3">选项3</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="1-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="1-4-1">选项4-1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-submenu index="2">
+            <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+            <el-menu-item-group>
+              <template slot="title">分组一</template>
+              <el-menu-item index="2-1">选项1</el-menu-item>
+              <el-menu-item index="2-2">选项2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="2-3">选项3</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="2-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+          <el-submenu index="3">
+            <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+            <el-menu-item-group>
+              <template slot="title">分组一</template>
+              <el-menu-item index="3-1">选项1</el-menu-item>
+              <el-menu-item index="3-2">选项2</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="分组2">
+              <el-menu-item index="3-3">选项3</el-menu-item>
+            </el-menu-item-group>
+            <el-submenu index="3-4">
+              <template slot="title">选项4</template>
+              <el-menu-item index="3-4-1">选项4-1</el-menu-item>
+            </el-submenu>
+          </el-submenu>
+        </el-menu>
+    </el-aside>
+    
+    <el-main>
+      <el-table :data="tableData">
+        <el-table-column prop="date" label="日期" width="140">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名" width="120">
+        </el-table-column>
+        <el-table-column prop="address" label="地址">
+        </el-table-column>
+      </el-table>
+    </el-main>
+  </el-container>
+</el-container>
 </template>
-<script type="text/ecmascript-6">
-    export default {
-        data(){
-            return {
-                searchCriteria: '',
-                breadcrumbItems: ['导航一'],
-            }
-        },
+<style>
+  .el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
+  }
+  
+  .el-aside {
+    color: #333;
+  }
+</style>
 
-        methods:{
-            handleIconClick(ev) {
-                console.log(ev);
-            }
-        },
+<script>
+  export default {
+    data() {
+      const item = {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      };
+      return {
+        tableData: Array(20).fill(item)
+      }
     }
+  };
 </script>
